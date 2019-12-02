@@ -46,7 +46,7 @@ namespace WINTEST
             {
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())  // 다음 레코드가 있으면 true
+                while (reader.Read())  
                 {
                     cbPublisher.Items.Add(reader.GetString("publisher"));
                 }
@@ -147,7 +147,6 @@ namespace WINTEST
             selectedRowIndex = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[selectedRowIndex];
 
-            // 새로운 폼에 선택된 row의 정보를 담아서 생성
             StockAs Dig = new StockAs(
                 selectedRowIndex,
                 row.Cells[0].Value.ToString(),
@@ -158,8 +157,8 @@ namespace WINTEST
                 row.Cells[5].Value.ToString()
             );
 
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;               
+            Dig.ShowDialog();          
             Dig.Dispose();
         }
 
@@ -185,9 +184,9 @@ namespace WINTEST
                 conn.Open();
                 dataAdapter.InsertCommand.ExecuteNonQuery();
 
-                dataSet.Clear();                                        // 이전 데이터 지우기
-                dataAdapter.Fill(dataSet, "book");                      // DB -> DataSet
-                dataGridView1.DataSource = dataSet.Tables["book"];      // dataGridView에 테이블 표시                                     // 텍스트 박스 내용 지우기
+                dataSet.Clear();                                        
+                dataAdapter.Fill(dataSet, "book");                    
+                dataGridView1.DataSource = dataSet.Tables["book"];      
             }
             catch (Exception ex)
             {
@@ -240,7 +239,7 @@ namespace WINTEST
                 conn.Open();
                 dataAdapter.UpdateCommand.ExecuteNonQuery();
 
-                dataSet.Clear();  // 이전 데이터 지우기
+                dataSet.Clear(); 
                 dataAdapter.Fill(dataSet, "book");
                 dataGridView1.DataSource = dataSet.Tables["book"];
             }
@@ -257,8 +256,8 @@ namespace WINTEST
         private void btnInsert_Click(object sender, EventArgs e)
         {
             StockAs Dig = new StockAs();
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;               
+            Dig.ShowDialog();              
             Dig.Dispose();
         }
 
@@ -271,16 +270,6 @@ namespace WINTEST
             textBoxMin.Clear();
             textBoxMax.Clear();
             textBoxStock.Clear();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxStock_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -45,7 +45,7 @@ namespace WINTEST
             {
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())  // 다음 레코드가 있으면 true
+                while (reader.Read())  
                 {
                     cbCity.Items.Add(reader.GetString("city"));
                 }
@@ -54,7 +54,7 @@ namespace WINTEST
                 sql = "SELECT distinct dong FROM customer";
                 cmd = new MySqlCommand(sql, conn);
                 reader = cmd.ExecuteReader();
-                while (reader.Read())  // 다음 레코드가 있으면 true
+                while (reader.Read())  
                 {
                     cbDong.Items.Add(reader.GetString("dong"));
                 }
@@ -76,14 +76,13 @@ namespace WINTEST
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@city", cbCity.Text);
 
-            cbDong.Items.Clear();        // ComboBox 데이터 초기화
+            cbDong.Items.Clear();      
 
             try
             {
-                // District 목록 표시
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())  // 다음 레코드가 있으면 true
+                while (reader.Read()) 
                 {
                     cbDong.Items.Add(reader.GetString("dong"));
                 }
@@ -165,7 +164,6 @@ namespace WINTEST
             selectedRowIndex = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[selectedRowIndex];
 
-            // 새로운 폼에 선택된 row의 정보를 담아서 생성
             MembAs Dig = new MembAs(
                 selectedRowIndex,
                 row.Cells[0].Value.ToString(),
@@ -176,8 +174,8 @@ namespace WINTEST
                 row.Cells[5].Value.ToString()
                 );
 
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;              
+            Dig.ShowDialog();
             Dig.Dispose();
         }
 
@@ -204,9 +202,9 @@ namespace WINTEST
                 conn.Open();
                 dataAdapter.InsertCommand.ExecuteNonQuery();
 
-                dataSet.Clear();                                        // 이전 데이터 지우기
-                dataAdapter.Fill(dataSet, "customer");                      // DB -> DataSet
-                dataGridView1.DataSource = dataSet.Tables["customer"];      // dataGridView에 테이블 표시                                     // 텍스트 박스 내용 지우기
+                dataSet.Clear();                                       
+                dataAdapter.Fill(dataSet, "customer");                      
+                dataGridView1.DataSource = dataSet.Tables["customer"];      
             }
             catch (Exception ex)
             {
@@ -219,7 +217,6 @@ namespace WINTEST
             #endregion
         }
 
-        // **** Delete SQL 실행 ****
         internal void DeleteRow(string id)
         {
             string sql = "DELETE FROM customer WHERE custid=@custid";
@@ -245,7 +242,6 @@ namespace WINTEST
             }
         }
 
-        // **** Update SQL 실행 ****
         internal void UpdateRow(string[] rowDatas)
         {
             string sql = "UPDATE customer SET name=@name, city=@city, dong=@dong, detail=@detail, phone=@phone WHERE custid=@custid";
@@ -279,8 +275,8 @@ namespace WINTEST
         private void btnInsert_Click(object sender, EventArgs e)
         {
             MembAs Dig = new MembAs();
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;             
+            Dig.ShowDialog();              
             Dig.Dispose();
         }
 

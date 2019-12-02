@@ -156,7 +156,6 @@
             this.textBoxStock.Size = new System.Drawing.Size(108, 30);
             this.textBoxStock.TabIndex = 7;
             this.textBoxStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxStock.TextChanged += new System.EventHandler(this.textBoxStock_TextChanged);
             // 
             // textBoxAuthor
             // 
@@ -237,7 +236,6 @@
             this.label3.Size = new System.Drawing.Size(168, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "BookName : ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // cbPublisher
             // 

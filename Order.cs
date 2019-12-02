@@ -119,7 +119,6 @@ namespace WINTEST
             selectedRowIndex = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[selectedRowIndex];
 
-            // 새로운 폼에 선택된 row의 정보를 담아서 생성
             OrderAs Dig = new OrderAs(
                 selectedRowIndex,
                 row.Cells[0].Value.ToString(),
@@ -131,8 +130,8 @@ namespace WINTEST
                 row.Cells[6].Value.ToString()
                 );
 
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;               
+            Dig.ShowDialog();               
             Dig.Dispose();
         }
 
@@ -160,9 +159,9 @@ namespace WINTEST
                 conn.Open();
                 dataAdapter.InsertCommand.ExecuteNonQuery();
 
-                dataSet.Clear();                                        // 이전 데이터 지우기
-                dataAdapter.Fill(dataSet, "orders");                      // DB -> DataSet
-                dataGridView1.DataSource = dataSet.Tables["orders"];      // dataGridView에 테이블 표시                                     // 텍스트 박스 내용 지우기
+                dataSet.Clear();                                       
+                dataAdapter.Fill(dataSet, "orders");                      
+                dataGridView1.DataSource = dataSet.Tables["orders"];      
             }
             catch (Exception)
             {
@@ -173,6 +172,7 @@ namespace WINTEST
                 conn.Close();
             }
         }
+
         internal void DeleteRow(string id)
         {
             string sql = "DELETE FROM orders WHERE orderid=@orderid";
@@ -197,6 +197,7 @@ namespace WINTEST
                 conn.Close();
             }
         }
+
         internal void UpdateRow(string[] rowDatas)
         {
             string sql = "UPDATE orders SET custid=@custid, bookid=@bookid, saleprice=@saleprice, year=@year, month=@month, day=@day WHERE orderid=@orderid";
@@ -215,7 +216,7 @@ namespace WINTEST
                 conn.Open();
                 dataAdapter.UpdateCommand.ExecuteNonQuery();
 
-                dataSet.Clear();  // 이전 데이터 지우기
+                dataSet.Clear();  
                 dataAdapter.Fill(dataSet, "orders");
                 dataGridView1.DataSource = dataSet.Tables["orders"];
             }
@@ -232,8 +233,8 @@ namespace WINTEST
         private void btnInsert_Click(object sender, EventArgs e)
         {
             OrderAs Dig = new OrderAs();
-            Dig.Owner = this;               // 새로운 폼의 부모가 Form1 인스턴스임을 지정
-            Dig.ShowDialog();               // 폼 띄우기(Modal)
+            Dig.Owner = this;               
+            Dig.ShowDialog();               
             Dig.Dispose();
         }
 
