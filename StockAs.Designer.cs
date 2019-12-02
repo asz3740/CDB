@@ -234,7 +234,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("여기어때 잘난체 OTF", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label6.Location = new System.Drawing.Point(50, 9);
+            this.label6.Location = new System.Drawing.Point(64, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(281, 20);
             this.label6.TabIndex = 7;
